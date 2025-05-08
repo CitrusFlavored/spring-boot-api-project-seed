@@ -1,7 +1,11 @@
 import java.io.File;
 import java.util.Scanner;
+
 import static com.company.project.core.ProjectConstant.*;
 
+/**
+ * 清除代码生成器生成的文件。
+ */
 public class GeneratedFilesCleaner {
     private static final String PROJECT_PATH = System.getProperty("user.dir");//项目在硬盘上的基础路径
     private static final String JAVA_PATH = "/src/main/java"; //java文件路径
@@ -37,10 +41,19 @@ public class GeneratedFilesCleaner {
         scanner.close();
     }
 
+    /**
+     * 格式化包名为文件夹路径
+     * @param rawPathStr 包名
+     * @return 包路径
+     */
     public static String pathReplace(String rawPathStr) {
         return rawPathStr.replace(".", File.separator);
     }
 
+    /**
+     * 删除文件夹
+     * @param folder 文件夹
+     */
     public static void deleteFolder(File folder) {
         if (folder.isDirectory()) {
             File[] files = folder.listFiles();
